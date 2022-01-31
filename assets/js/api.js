@@ -16,18 +16,27 @@ const getPokemonData = (pokemonData) => {
   });
 };
 
+const BGCOLOR = {
+  grass: "bg-success",
+  fire: "bg-danger",
+  water: "bg-primary",
+  bug: "bg-warning",
+  electric: "bg-warning.bg-gradient",
+};
+
 const fillData = (pokemon) => {
+  console.log(pokemon.types[0].type.name);
   let html = "";
-  html += `<div class="col">`;
-  html += '<div class="card h-100">';
-  html += `<img src="${pokemon.sprites.other.dream_world.front_default}" class="card-img-top" alt="...">`;
-  html += '<div class="card-body text-center">';
-  html += `<h5 class="card-title">${
+  html += '<div class="col">';
+  html += `<div class="card h-100 ${pokemon.types[0].type.name} p-2 text-white">`;
+  html += '<div class="card-body text-center fs-4">';
+  html += `<h5 class="card-title fs-2">${
     pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
   }</h5>`;
   html += `<p class="card-text">Height: ${pokemon.height}</p>`;
   html += `<p class="card-text">Weight: ${pokemon.weight}</p>`;
   html += "</div>";
+  html += `<img src="${pokemon.sprites.other.dream_world.front_default}" class="card-img-top" alt="...">`;
   html += "</div>";
   html += "</div>";
   document.getElementById("characters").innerHTML += html;
