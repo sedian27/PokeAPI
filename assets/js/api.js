@@ -16,14 +16,6 @@ const getPokemonData = (pokemonData) => {
   });
 };
 
-const BGCOLOR = {
-  grass: "bg-success",
-  fire: "bg-danger",
-  water: "bg-primary",
-  bug: "bg-warning",
-  electric: "bg-warning.bg-gradient",
-};
-
 const fillData = (pokemon) => {
   let html = "";
   html += '<div class="col">';
