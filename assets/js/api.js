@@ -25,7 +25,6 @@ const BGCOLOR = {
 };
 
 const fillData = (pokemon) => {
-  console.log(pokemon.types[0].type.name);
   let html = "";
   html += '<div class="col">';
   html += `<div class="card h-100 ${pokemon.types[0].type.name} p-2 text-white">`;
