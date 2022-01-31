@@ -22,7 +22,9 @@ const fillData = (pokemon) => {
   html += '<div class="card h-100">';
   html += `<img src="${pokemon.sprites.other.dream_world.front_default}" class="card-img-top" alt="...">`;
   html += '<div class="card-body text-center">';
-  html += `<h5 class="card-title">${pokemon.name}</h5>`;
+  html += `<h5 class="card-title">${
+    pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
+  }</h5>`;
   html += `<p class="card-text">Height: ${pokemon.height}</p>`;
   html += `<p class="card-text">Weight: ${pokemon.weight}</p>`;
   html += "</div>";
