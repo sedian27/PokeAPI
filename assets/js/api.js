@@ -3,11 +3,14 @@ const API = "https://pokeapi.co/api/v2/pokemon?limit=50&offset=0";
 const getData = (api) => {
   return fetch(api)
     .then((res) => res.json())
-    .then((data) => getPokemonData(data.results))
+    .then((data) => {
+      getPokemonData(data.results), pagination(data);
+    })
     .catch((error) => console.error("Error en la API:", error));
 };
 
 const getPokemonData = (pokemonData) => {
+  document.getElementById("characters").innerHTML = "";
   pokemonData.forEach((pokemon) => {
     fetch(pokemon.url)
       .then((res) => res.json())
@@ -31,6 +34,18 @@ const fillData = (pokemon) => {
   html += "</div>";
   html += "</div>";
   document.getElementById("characters").innerHTML += html;
+};
+
+const pagination = (data) => {
+  let prevDisabled = data.previous == null ? "disabled" : "";
+  let nextDisabled = data.next == null ? "disabled" : "";
+
+  document.getElementById(
+    "next"
+  ).innerHTML = `<a class="btn ${nextDisabled}" onclick="getData('${data.next}')"><i class="fas fa-chevron-right"></i></a>`;
+  document.getElementById(
+    "prev"
+  ).innerHTML = `<a class="btn ${prevDisabled}" onclick="getData('${data.previous}')"><i class="fas fa-chevron-left"></i></a>`;
 };
 
 getData(API);
